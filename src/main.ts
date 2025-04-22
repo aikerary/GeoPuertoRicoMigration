@@ -4,6 +4,7 @@ import migrationData from './data/data.json';
 
 interface MigrationYearData {
     "Net Migration": number;
+    "Milestones": string;
 }
 
 interface MigrationData {
@@ -465,12 +466,19 @@ function updateVisualization(year: number) {
     const yearStr = year.toString();
     const data = typedMigrationData[yearStr];
     const netMigration = data ? data["Net Migration"] : 0;
+    const milestone = data ? data["Milestones"] : "No milestone data available";
 
     const currentDirection = netMigration < 0 ? 'outflow' : 'inflow';
     
     animateCounterUpdate(yearLabel, yearStr);
     animateCounterUpdate(valueDisplay, netMigration.toLocaleString());
     valueDisplay.className = 'migration-value ' + (netMigration >= 0 ? 'positive' : 'negative');
+    
+    // Update milestone text
+    const milestoneElement = document.getElementById('milestone-text');
+    if (milestoneElement) {
+        animateTextChange(milestoneElement, milestone);
+    }
 
     if (!data) return;
 
@@ -596,6 +604,15 @@ function animateCounterUpdate(element: HTMLElement, newValue: string) {
     }, 300);
 }
 
+function animateTextChange(element: HTMLElement, newText: string) {
+    element.classList.add('updating');
+    
+    setTimeout(() => {
+        element.textContent = newText;
+        element.classList.remove('updating');
+    }, 300);
+}
+
 slider.addEventListener('input', (event) => {
     const now = Date.now();
     const year = parseInt((event.target as HTMLInputElement).value, 10);
@@ -606,6 +623,38 @@ slider.addEventListener('input', (event) => {
 slider.addEventListener('change', (event) => {
     const year = parseInt((event.target as HTMLInputElement).value, 10);
     updateVisualization(year);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Create milestone display element if it doesn't already exist
+    if (!document.getElementById('milestone-container')) {
+        const controlsContainer = document.querySelector('.controls-container');
+        if (controlsContainer) {
+            const milestoneContainer = document.createElement('div');
+            milestoneContainer.id = 'milestone-container';
+            milestoneContainer.className = 'milestone-container';
+            
+            const milestoneHeader = document.createElement('h3');
+            milestoneHeader.textContent = 'Historical Context';
+            milestoneHeader.className = 'milestone-header';
+            
+            const milestoneText = document.createElement('p');
+            milestoneText.id = 'milestone-text';
+            milestoneText.className = 'milestone-text';
+            
+            // Add the elements to the DOM
+            milestoneContainer.appendChild(milestoneHeader);
+            milestoneContainer.appendChild(milestoneText);
+            controlsContainer.appendChild(milestoneContainer);
+            
+            // Set initial milestone text
+            const initialYear = parseInt(slider.value, 10);
+            const initialData = typedMigrationData[initialYear.toString()];
+            if (initialData && initialData["Milestones"]) {
+                milestoneText.textContent = initialData["Milestones"];
+            }
+        }
+    }
 });
 
 updateVisualization(minYear);

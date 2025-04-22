@@ -1,68 +1,262 @@
 {
-    "1960": {"Net Migration": -26328.0},
-    "1961": {"Net Migration": -18268.0},
-    "1962": {"Net Migration": -20180.0},
-    "1963": {"Net Migration": -21180.0},
-    "1964": {"Net Migration": -22169.0},
-    "1965": {"Net Migration": -24057.0},
-    "1966": {"Net Migration": -19282.0},
-    "1967": {"Net Migration": -17776.0},
-    "1968": {"Net Migration": -16164.0},
-    "1969": {"Net Migration": -18060.0},
-    "1970": {"Net Migration": -6440.0},
-    "1971": {"Net Migration": -4917.0},
-    "1972": {"Net Migration": -1444.0},
-    "1973": {"Net Migration": -917.0},
-    "1974": {"Net Migration": -1495.0},
-    "1975": {"Net Migration": -731.0},
-    "1976": {"Net Migration": -2483.0},
-    "1977": {"Net Migration": -3925.0},
-    "1978": {"Net Migration": -3337.0},
-    "1979": {"Net Migration": 681.0},
-    "1980": {"Net Migration": -5094.0},
-    "1981": {"Net Migration": -7391.0},
-    "1982": {"Net Migration": -7383.0},
-    "1983": {"Net Migration": -7250.0},
-    "1984": {"Net Migration": -6072.0},
-    "1985": {"Net Migration": -8143.0},
-    "1986": {"Net Migration": -11985.0},
-    "1987": {"Net Migration": -11183.0},
-    "1988": {"Net Migration": -10611.0},
-    "1989": {"Net Migration": -12434.0},
-    "1990": {"Net Migration": -6865.0},
-    "1991": {"Net Migration": -4857.0},
-    "1992": {"Net Migration": -4198.0},
-    "1993": {"Net Migration": -6207.0},
-    "1994": {"Net Migration": -6385.0},
-    "1995": {"Net Migration": -5930.0},
-    "1996": {"Net Migration": -6559.0},
-    "1997": {"Net Migration": -8067.0},
-    "1998": {"Net Migration": -4606.0},
-    "1999": {"Net Migration": -4607.0},
-    "2000": {"Net Migration": -19394.0},
-    "2001": {"Net Migration": -24907.0},
-    "2002": {"Net Migration": -25268.0},
-    "2003": {"Net Migration": -24947.0},
-    "2004": {"Net Migration": -26695.0},
-    "2005": {"Net Migration": -27139.0},
-    "2006": {"Net Migration": -27499.0},
-    "2007": {"Net Migration": -24762.0},
-    "2008": {"Net Migration": -21734.0},
-    "2009": {"Net Migration": -18849.0},
-    "2010": {"Net Migration": -30960.0},
-    "2011": {"Net Migration": -38545.0},
-    "2012": {"Net Migration": -41108.0},
-    "2013": {"Net Migration": -42641.0},
-    "2014": {"Net Migration": -41932.0},
-    "2015": {"Net Migration": -42912.0},
-    "2016": {"Net Migration": -41237.0},
-    "2017": {"Net Migration": -149999.0},
-    "2018": {"Net Migration": 10304.0},
-    "2019": {"Net Migration": 10623.0},
-    "2020": {"Net Migration": -7410.0},
-    "2021": {"Net Migration": -7410.0},
-    "2022": {"Net Migration": 16704.0},
-    "2023": {"Net Migration": 19833.0},
-    "2024": {"Net Migration": 11561.0}
-  }
-  
+    "1960": {
+        "Net Migration": -26328.0,
+        "Milestones": "Continuation of 'The Great Migration' to the US seeking economic opportunities; peak of Operation Bootstrap industrialization efforts."
+    },
+    "1961": {
+        "Net Migration": -18268.0,
+        "Milestones": "Net emigration persists, although lower than the previous year."
+    },
+    "1962": {
+        "Net Migration": -20180.0,
+        "Milestones": "Sustained emigration towards the United States."
+    },
+    "1963": {
+        "Net Migration": -21180.0,
+        "Milestones": "The trend of high emigration continues."
+    },
+    "1964": {
+        "Net Migration": -22169.0,
+        "Milestones": "Emigration remains a key demographic factor."
+    },
+    "1965": {
+        "Net Migration": -24057.0,
+        "Milestones": "One of the net emigration peaks during this decade."
+    },
+    "1966": {
+        "Net Migration": -19282.0,
+        "Milestones": "Slight decrease in net emigration compared to the previous year."
+    },
+    "1967": {
+        "Net Migration": -17776.0,
+        "Milestones": "First plebiscite on political status held (Commonwealth status wins)."
+    },
+    "1968": {
+        "Net Migration": -16164.0,
+        "Milestones": "Luis A. Ferré (PNP) wins the governorship, the first elected governor not belonging to the PPD."
+    },
+    "1969": {
+        "Net Migration": -18060.0,
+        "Milestones": "Net emigration increases slightly again."
+    },
+    "1970": {
+        "Net Migration": -6440.0,
+        "Milestones": "Notable reduction in net emigration compared to the previous decade. Beginning of a migration slowdown."
+    },
+    "1971": {
+        "Net Migration": -4917.0,
+        "Milestones": "Trend of lower emigration continues."
+    },
+    "1972": {
+        "Net Migration": -1444.0,
+        "Milestones": "Net emigration reaches one of its lowest points to date."
+    },
+    "1973": {
+        "Net Migration": -917.0,
+        "Milestones": "Global oil crisis impacts the global and local economy, affecting incentives to migrate."
+    },
+    "1974": {
+        "Net Migration": -1495.0,
+        "Milestones": "Low net emigration continues amidst global economic uncertainty."
+    },
+    "1975": {
+        "Net Migration": -731.0,
+        "Milestones": "The lowest level of net emigration recorded in the dataset so far."
+    },
+    "1976": {
+        "Net Migration": -2483.0,
+        "Milestones": "A slight rebound in net emigration begins."
+    },
+    "1977": {
+        "Net Migration": -3925.0,
+        "Milestones": "Section 936 of the US Internal Revenue Code is approved, consolidating tax incentives for manufacturing."
+    },
+    "1978": {
+        "Net Migration": -3337.0,
+        "Milestones": "The economy shows dependence on Section 936 incentives."
+    },
+    "1979": {
+        "Net Migration": 681.0,
+        "Milestones": "First year with positive net migration recorded in this dataset, potentially indicating return migration or reduced departures."
+    },
+    "1980": {
+        "Net Migration": -5094.0,
+        "Milestones": "Beginning of a new phase of negative net emigration. Economic recession in the US."
+    },
+    "1981": {
+        "Net Migration": -7391.0,
+        "Milestones": "Net emigration increases amid economic difficulties."
+    },
+    "1982": {
+        "Net Migration": -7383.0,
+        "Milestones": "Population outflow persists."
+    },
+    "1983": {
+        "Net Migration": -7250.0,
+        "Milestones": "Net emigration trend continues."
+    },
+    "1984": {
+        "Net Migration": -6072.0,
+        "Milestones": "Slight moderation in the net outflow."
+    },
+    "1985": {
+        "Net Migration": -8143.0,
+        "Milestones": "Uptick in emigration. Mameyes landslide disaster in Ponce."
+    },
+    "1986": {
+        "Net Migration": -11985.0,
+        "Milestones": "Net emigration exceeds 10,000 for the first time since the 1960s in this dataset."
+    },
+    "1987": {
+        "Net Migration": -11183.0,
+        "Milestones": "High net emigration continues."
+    },
+    "1988": {
+        "Net Migration": -10611.0,
+        "Milestones": "Significant population outflow continues."
+    },
+    "1989": {
+        "Net Migration": -12434.0,
+        "Milestones": "Hurricane Hugo causes significant damage, potentially boosting emigration."
+    },
+    "1990": {
+        "Net Migration": -6865.0,
+        "Milestones": "Net emigration decreases compared to the late 80s."
+    },
+    "1991": {
+        "Net Migration": -4857.0,
+        "Milestones": "Moderate net emigration continues."
+    },
+    "1992": {
+        "Net Migration": -4198.0,
+        "Milestones": "Trend of moderate emigration continues."
+    },
+    "1993": {
+        "Net Migration": -6207.0,
+        "Milestones": "Status plebiscite (Commonwealth wins). Slight increase in net emigration."
+    },
+    "1994": {
+        "Net Migration": -6385.0,
+        "Milestones": "The phase-out of Section 936 is announced, generating future economic uncertainty."
+    },
+    "1995": {
+        "Net Migration": -5930.0,
+        "Milestones": "Net emigration remains relatively stable."
+    },
+    "1996": {
+        "Net Migration": -6559.0,
+        "Milestones": "The 10-year phase-out of Section 936 formally begins."
+    },
+    "1997": {
+        "Net Migration": -8067.0,
+        "Milestones": "Net emigration increases as the end of Section 936 incentives approaches."
+    },
+    "1998": {
+        "Net Migration": -4606.0,
+        "Milestones": "Hurricane Georges hits the island causing devastation. Status plebiscite ('None of the above' option wins)."
+    },
+    "1999": {
+        "Net Migration": -4607.0,
+        "Milestones": "Protests against the US military presence in Vieques intensify after an accidental death."
+    },
+    "2000": {
+        "Net Migration": -19394.0,
+        "Milestones": "Sharp increase in net emigration, coinciding with the start of a new decade and persistent economic uncertainty."
+    },
+    "2001": {
+        "Net Migration": -24907.0,
+        "Milestones": "High emigration continues. Post-9/11 economic impact in the US could affect the situation."
+    },
+    "2002": {
+        "Net Migration": -25268.0,
+        "Milestones": "The trend of high emigration is maintained."
+    },
+    "2003": {
+        "Net Migration": -24947.0,
+        "Milestones": "Definitive closure of the Roosevelt Roads Naval Station and end of military practices in Vieques."
+    },
+    "2004": {
+        "Net Migration": -26695.0,
+        "Milestones": "Net emigration remains at very high levels."
+    },
+    "2005": {
+        "Net Migration": -27139.0,
+        "Milestones": "Last full year with residual benefits of Section 936."
+    },
+    "2006": {
+        "Net Migration": -27499.0,
+        "Milestones": "Definitive end of Section 936. Official start of the economic recession in Puerto Rico that would last over a decade."
+    },
+    "2007": {
+        "Net Migration": -24762.0,
+        "Milestones": "The economic crisis deepens, keeping emigration high."
+    },
+    "2008": {
+        "Net Migration": -21734.0,
+        "Milestones": "Global financial crisis worsens the local economic situation."
+    },
+    "2009": {
+        "Net Migration": -18849.0,
+        "Milestones": "Austerity measures (Law 7) are implemented, including massive layoffs of public employees."
+    },
+    "2010": {
+        "Net Migration": -30960.0,
+        "Milestones": "Net emigration again exceeds 30,000; the economic crisis persists."
+    },
+    "2011": {
+        "Net Migration": -38545.0,
+        "Milestones": "Acceleration of net emigration, reflecting continued economic deterioration."
+    },
+    "2012": {
+        "Net Migration": -41108.0,
+        "Milestones": "Status plebiscite (majority rejects current status and prefers statehood)."
+    },
+    "2013": {
+        "Net Migration": -42641.0,
+        "Milestones": "Emigration reaches new peaks. Public debt becomes a central issue."
+    },
+    "2014": {
+        "Net Migration": -41932.0,
+        "Milestones": "The government admits the debt is unpayable. Fiscal reform and local bankruptcy laws are approved (later invalidated)."
+    },
+    "2015": {
+        "Net Migration": -42912.0,
+        "Milestones": "Puerto Rico defaults on part of its public debt."
+    },
+    "2016": {
+        "Net Migration": -41237.0,
+        "Milestones": "The US Congress passes the PROMESA Act, creating a Fiscal Oversight Board to manage the debt crisis."
+    },
+    "2017": {
+        "Net Migration": -149999.0,
+        "Milestones": "Hurricanes Irma and Maria cause catastrophic devastation, leading to an unprecedented recent mass exodus. Status plebiscite (low turnout, statehood wins)."
+    },
+    "2018": {
+        "Net Migration": 10304.0,
+        "Milestones": "Post-Maria period. Positive net migration for the first time since 1979, possibly due to returnees, reconstruction workers, or data fluctuations."
+    },
+    "2019": {
+        "Net Migration": 10623.0,
+        "Milestones": "Massive protests ('Summer of '19') lead to the resignation of Governor Ricardo Rosselló. Positive net migration continues."
+    },
+    "2020": {
+        "Net Migration": -7410.0,
+        "Milestones": "Sequence of earthquakes affects the southern region. Start of the COVID-19 pandemic impacts global mobility and the economy."
+    },
+    "2021": {
+        "Net Migration": -7410.0,
+        "Milestones": "Continuation of the pandemic. Debate over post-disaster reconstruction and management of federal funds. (Migration data seems repeated from 2020, verify original source if possible)."
+    },
+    "2022": {
+        "Net Migration": 16704.0,
+        "Milestones": "Hurricane Fiona causes significant damage, especially to the power grid. Notable positive net migration, possible influence of remote work, diaspora return, or economic initiatives."
+    },
+    "2023": {
+        "Net Migration": 19833.0,
+        "Milestones": "Positive net migration trend continues. Progress in debt restructuring under PROMESA. Debates on energy and economic future."
+    },
+    "2024": {
+        "Net Migration": 11561.0,
+        "Milestones": "Election year in Puerto Rico and the US. Challenges of reconstruction and economic development persist. (Migration data is likely a projection or preliminary data)."
+    }
+}
