@@ -11,21 +11,8 @@ interface MigrationData {
     [year: string]: MigrationYearData;
 }
 
-interface GeoJSONFeature {
-    type: string;
-    properties: any;
-    geometry: any;
-}
-
-interface GeoJSONData {
-    type: string;
-    name?: string;
-    crs?: any;
-    features: GeoJSONFeature[];
-}
-
 const prGeoJsonData = {
-  "type": "FeatureCollection",
+  "type": "FeatureCollection" as const,
   "name": "pr",
   "crs": {
     "type": "name",
@@ -33,12 +20,12 @@ const prGeoJsonData = {
   },
   "features": [
     {
-      "type": "Feature",
+      "type": "Feature" as const,
       "properties": { 
         "NAME": "Puerto Rico"
       },
       "geometry": {
-        "type": "Polygon",
+        "type": "Polygon" as const,
         "coordinates": [
           [
             [-66.282434455008215, 18.514761664295364],
@@ -58,15 +45,15 @@ const prGeoJsonData = {
 };
 
 const usGeoJsonData = {
-  "type": "FeatureCollection",
+  "type": "FeatureCollection" as const,
   "features": [
     {
-      "type": "Feature",
+      "type": "Feature" as const,
       "properties": {
         "NAME": "United States"
       },
       "geometry": {
-        "type": "Polygon",
+        "type": "Polygon" as const,
         "coordinates": [
           [
             [-122.84, 49.000000000000114],
@@ -337,11 +324,10 @@ let prLayer: L.GeoJSON;
 let usLayer: L.GeoJSON;
 let migrationArrow: any | null = null;
 let isAnimating = false;
-let lastUpdateTime = 0;
 
 function initializeLayers() {
     try {
-        prLayer = L.geoJSON(prGeoJsonData, {
+        prLayer = L.geoJSON(prGeoJsonData as any, {
             style: { 
                 color: "#3388ff", 
                 weight: 2, 
@@ -351,7 +337,7 @@ function initializeLayers() {
             }
         }).addTo(map);
         
-        usLayer = L.geoJSON(usGeoJsonData, {
+        usLayer = L.geoJSON(usGeoJsonData as any, {
             style: { 
                 color: "#ff5e5e", 
                 weight: 2, 
@@ -429,9 +415,9 @@ function fitMapToBounds() {
         const usBounds = usLayer.getBounds();
 
         if (prBounds.isValid() && usBounds.isValid()) {
-            const combinedBounds = L.latLngBounds(prBounds).extend(usBounds);
-            const paddedBounds: L.LatLngBounds = combinedBounds.pad(0.1);
-            map.fitBounds(paddedBounds);
+            const bounds = prBounds;
+            bounds.extend(usBounds);
+            map.fitBounds(bounds);
         } else {
             console.warn("Could not get valid bounds for PR or US layer to fit map.");
             map.setView([30, -80], 3);
@@ -461,7 +447,6 @@ let previousDirection: 'inflow' | 'outflow' | null = null;
 let previousWeight: number = 0;
 
 function getMilestoneIcon(milestoneText: string): string {
-    // Define patterns to match with appropriate icons
     const patterns = [
         { regex: /hurricane|irma|maria|hugo|fiona|georges/i, icon: 'fa-hurricane' },
         { regex: /earthquake/i, icon: 'fa-house-crack' },
@@ -476,14 +461,12 @@ function getMilestoneIcon(milestoneText: string): string {
         { regex: /oil|energy|power/i, icon: 'fa-bolt' }
     ];
 
-    // Find the first matching pattern
     for (const pattern of patterns) {
         if (pattern.regex.test(milestoneText)) {
             return pattern.icon;
         }
     }
 
-    // Default icon if no pattern matches
     return 'fa-info-circle';
 }
 
@@ -501,7 +484,6 @@ function updateVisualization(year: number) {
     animateCounterUpdate(valueDisplay, netMigration.toLocaleString());
     valueDisplay.className = 'migration-value ' + (netMigration >= 0 ? 'positive' : 'negative');
     
-    // Update milestone text with icon
     const milestoneElement = document.getElementById('milestone-text');
     if (milestoneElement) {
         animateTextChange(milestoneElement, milestone, milestone);
@@ -580,12 +562,10 @@ function updateVisualization(year: number) {
         }
     }, directionChanged ? 400 : 100);
     
-    // Store current values for next update
     previousDirection = currentDirection;
     previousWeight = weight;
 }
 
-// Clean up previous visualization elements
 function cleanupPreviousVisualization() {
     if (migrationFlowLine) {
         map.removeLayer(migrationFlowLine);
@@ -636,7 +616,6 @@ function animateTextChange(element: HTMLElement, newText: string, milestoneText?
     
     setTimeout(() => {
         if (milestoneText) {
-            // Create icon element if this is a milestone text update
             const icon = getMilestoneIcon(milestoneText);
             element.innerHTML = `<i class="fas ${icon} milestone-icon"></i> ${milestoneText}`;
         } else {
@@ -647,10 +626,8 @@ function animateTextChange(element: HTMLElement, newText: string, milestoneText?
 }
 
 slider.addEventListener('input', (event) => {
-    const now = Date.now();
     const year = parseInt((event.target as HTMLInputElement).value, 10);
     updateVisualization(year);
-    lastUpdateTime = now;
 });
 
 slider.addEventListener('change', (event) => {
@@ -659,13 +636,11 @@ slider.addEventListener('change', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Add Font Awesome to the document
     const fontAwesome = document.createElement('link');
     fontAwesome.rel = 'stylesheet';
     fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
     document.head.appendChild(fontAwesome);
     
-    // Create milestone display element if it doesn't already exist
     if (!document.getElementById('milestone-container')) {
         const controlsContainer = document.querySelector('.controls-container');
         if (controlsContainer) {
@@ -681,12 +656,10 @@ document.addEventListener('DOMContentLoaded', () => {
             milestoneText.id = 'milestone-text';
             milestoneText.className = 'milestone-text';
             
-            // Add the elements to the DOM
             milestoneContainer.appendChild(milestoneHeader);
             milestoneContainer.appendChild(milestoneText);
             controlsContainer.appendChild(milestoneContainer);
             
-            // Set initial milestone text with icon
             const initialYear = parseInt(slider.value, 10);
             const initialData = typedMigrationData[initialYear.toString()];
             if (initialData && initialData["Milestones"]) {
