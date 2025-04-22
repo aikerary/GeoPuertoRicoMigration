@@ -460,6 +460,33 @@ const usCentroid: L.LatLngTuple = [39.8283, -98.5795];
 let previousDirection: 'inflow' | 'outflow' | null = null;
 let previousWeight: number = 0;
 
+function getMilestoneIcon(milestoneText: string): string {
+    // Define patterns to match with appropriate icons
+    const patterns = [
+        { regex: /hurricane|irma|maria|hugo|fiona|georges/i, icon: 'fa-hurricane' },
+        { regex: /earthquake/i, icon: 'fa-house-crack' },
+        { regex: /election|governor|wins|plebiscite|vote|status/i, icon: 'fa-vote-yea' },
+        { regex: /economic|recession|section 936|tax|debt|promesa|fiscal/i, icon: 'fa-chart-line' },
+        { regex: /migration|emigration|exodus|outflow|inflow|return/i, icon: 'fa-plane' },
+        { regex: /protest|resign/i, icon: 'fa-bullhorn' },
+        { regex: /covid|pandemic/i, icon: 'fa-virus' },
+        { regex: /military|naval|vieques/i, icon: 'fa-shield-alt' },
+        { regex: /landslide|disaster|damage/i, icon: 'fa-triangle-exclamation' },
+        { regex: /law|act|congress|legal/i, icon: 'fa-gavel' },
+        { regex: /oil|energy|power/i, icon: 'fa-bolt' }
+    ];
+
+    // Find the first matching pattern
+    for (const pattern of patterns) {
+        if (pattern.regex.test(milestoneText)) {
+            return pattern.icon;
+        }
+    }
+
+    // Default icon if no pattern matches
+    return 'fa-info-circle';
+}
+
 function updateVisualization(year: number) {
     if (isAnimating) return;
     
@@ -474,10 +501,10 @@ function updateVisualization(year: number) {
     animateCounterUpdate(valueDisplay, netMigration.toLocaleString());
     valueDisplay.className = 'migration-value ' + (netMigration >= 0 ? 'positive' : 'negative');
     
-    // Update milestone text
+    // Update milestone text with icon
     const milestoneElement = document.getElementById('milestone-text');
     if (milestoneElement) {
-        animateTextChange(milestoneElement, milestone);
+        animateTextChange(milestoneElement, milestone, milestone);
     }
 
     if (!data) return;
@@ -604,11 +631,17 @@ function animateCounterUpdate(element: HTMLElement, newValue: string) {
     }, 300);
 }
 
-function animateTextChange(element: HTMLElement, newText: string) {
+function animateTextChange(element: HTMLElement, newText: string, milestoneText?: string) {
     element.classList.add('updating');
     
     setTimeout(() => {
-        element.textContent = newText;
+        if (milestoneText) {
+            // Create icon element if this is a milestone text update
+            const icon = getMilestoneIcon(milestoneText);
+            element.innerHTML = `<i class="fas ${icon} milestone-icon"></i> ${milestoneText}`;
+        } else {
+            element.textContent = newText;
+        }
         element.classList.remove('updating');
     }, 300);
 }
@@ -626,6 +659,12 @@ slider.addEventListener('change', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Add Font Awesome to the document
+    const fontAwesome = document.createElement('link');
+    fontAwesome.rel = 'stylesheet';
+    fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+    document.head.appendChild(fontAwesome);
+    
     // Create milestone display element if it doesn't already exist
     if (!document.getElementById('milestone-container')) {
         const controlsContainer = document.querySelector('.controls-container');
@@ -635,7 +674,7 @@ document.addEventListener('DOMContentLoaded', () => {
             milestoneContainer.className = 'milestone-container';
             
             const milestoneHeader = document.createElement('h3');
-            milestoneHeader.textContent = 'Historical Context';
+            milestoneHeader.innerHTML = '<i class="fas fa-landmark"></i> Historical Context';
             milestoneHeader.className = 'milestone-header';
             
             const milestoneText = document.createElement('p');
@@ -647,11 +686,13 @@ document.addEventListener('DOMContentLoaded', () => {
             milestoneContainer.appendChild(milestoneText);
             controlsContainer.appendChild(milestoneContainer);
             
-            // Set initial milestone text
+            // Set initial milestone text with icon
             const initialYear = parseInt(slider.value, 10);
             const initialData = typedMigrationData[initialYear.toString()];
             if (initialData && initialData["Milestones"]) {
-                milestoneText.textContent = initialData["Milestones"];
+                const initialMilestone = initialData["Milestones"];
+                const icon = getMilestoneIcon(initialMilestone);
+                milestoneText.innerHTML = `<i class="fas ${icon} milestone-icon"></i> ${initialMilestone}`;
             }
         }
     }

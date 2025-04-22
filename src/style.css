@@ -359,6 +359,13 @@ button:focus-visible {
   font-weight: 600;
   color: var(--dark-color);
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.milestone-header i {
+  color: var(--primary-color);
 }
 
 .milestone-text {
@@ -370,11 +377,41 @@ button:focus-visible {
   padding: 0.75rem;
   border-radius: 6px;
   border-left: 4px solid var(--primary-color);
+  display: flex;
+  align-items: flex-start;
 }
 
-/* Updating animation also works for milestone text */
-.milestone-text.updating {
-  animation: fadeUpdate 0.6s ease;
+.milestone-icon {
+  margin-right: 10px;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  min-width: 20px;
+  padding-top: 3px;
+}
+
+/* Icon colors based on event type */
+.fa-hurricane, .fa-house-crack, .fa-triangle-exclamation {
+  color: var(--danger-color);
+}
+
+.fa-chart-line, .fa-gavel, .fa-landmark {
+  color: var(--dark-color);
+}
+
+.fa-plane {
+  color: var(--primary-color);
+}
+
+.fa-vote-yea, .fa-shield-alt {
+  color: #9b59b6; /* purple */
+}
+
+.fa-bullhorn {
+  color: #f39c12; /* orange */
+}
+
+.fa-bolt, .fa-virus {
+  color: #e67e22; /* darker orange */
 }
 
 /* Responsive adjustments */
